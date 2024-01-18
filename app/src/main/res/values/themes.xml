@@ -5,7 +5,19 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="fontFamily">@font/poppins_semibold</item>
         <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:colorAccent">@color/redish</item>
     </style>
-
-    <style name="Theme.Manga_App" parent="Base.Theme.Manga_App" />
+    <style name="Theme.Manga_App" parent="Base.Theme.Manga_App">
+        <item name="colorPrimary">@color/redish</item>
+        <item name="colorPrimaryDark">@color/redish</item>
+        <item name="colorAccent">@color/redish</item>
+        <item name="backgroundColor">@color/white</item>
+    </style>
+    <style name="BottomNavigationViewStyle" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="itemTextAppearanceActive">@style/navTextActive</item>
+    </style>
+    <style name="navTextActive">
+        <item name="android:item">@color/redish</item>
+        <item name="android:textSize">12sp</item>
+    </style>
 </resources>

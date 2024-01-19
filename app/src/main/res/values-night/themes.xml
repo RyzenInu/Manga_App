@@ -6,5 +6,18 @@
         <item name="fontFamily">@font/poppins_semibold</item>
         <item name="android:fontFamily">@font/poppins_semibold</item>
     </style>
-
+    <style name="Theme.Manga_App" parent="Base.Theme.Manga_App">
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="backgroundColor">@color/black</item>
+        <item name="background">@color/black</item>
+        <item name="android:windowBackground">@color/black</item>
+    </style>
+    <style name="BotNavViewStyle" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemTextColor">@color/bot_nav_view_night</item>
+        <item name="itemIconTint">@color/bot_nav_view_night</item>
+        <item name="android:background">@drawable/nav_bg_rounded_dark</item>
+    </style>
+    <style name="BotNavView_CustomIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/redish30</item>
+    </style>
 </resources>

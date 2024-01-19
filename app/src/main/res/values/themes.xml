@@ -5,19 +5,20 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="fontFamily">@font/poppins_semibold</item>
         <item name="android:fontFamily">@font/poppins_semibold</item>
-        <item name="android:colorAccent">@color/redish</item>
     </style>
     <style name="Theme.Manga_App" parent="Base.Theme.Manga_App">
-        <item name="colorPrimary">@color/redish</item>
-        <item name="colorPrimaryDark">@color/redish</item>
-        <item name="colorAccent">@color/redish</item>
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryDark">@color/white</item>
         <item name="backgroundColor">@color/white</item>
+        <item name="background">@color/white</item>
+        <item name="android:windowBackground">@color/white</item>
     </style>
-    <style name="BottomNavigationViewStyle" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
-        <item name="itemTextAppearanceActive">@style/navTextActive</item>
+    <style name="BotNavViewStyle" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemTextColor">@color/bot_nav_view</item>
+        <item name="itemIconTint">@color/bot_nav_view</item>
+        <item name="android:background">@drawable/nav_bg_rounded</item>
     </style>
-    <style name="navTextActive">
-        <item name="android:item">@color/redish</item>
-        <item name="android:textSize">12sp</item>
+    <style name="BotNavView_CustomIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/redish30</item>
     </style>
 </resources>

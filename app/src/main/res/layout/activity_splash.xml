@@ -10,8 +10,8 @@
 
     <ImageView
         android:id="@+id/imageView"
+        style="@style/SplashScreen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitCenter"
-        app:srcCompat="@drawable/logo_vertical_dark" />
+        android:scaleType="fitCenter" />
 </LinearLayout>

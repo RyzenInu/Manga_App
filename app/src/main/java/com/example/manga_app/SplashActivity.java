@@ -17,8 +17,8 @@ public class SplashActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent mainActivity = new Intent(SplashActivity.this, HomeActivity.class);
-                startActivity(mainActivity);
+                Intent nextActivity = new Intent(SplashActivity.this, LoginActivity.class);
+                startActivity(nextActivity);
                 finish();
             }
         },3000);

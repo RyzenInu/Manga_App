@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Manga_App</string>
     <string name="mangaTitle">Manga</string>
+
+    <string name="bottomNavBar_home">Home</string>
+    <string name="bottomNavBar_equipment">Equipment</string>
+    <string name="bottomNavBar_stats">Stats</string>
+
+    <string name="title_Login">Login</string>
+    <string name="title_Register">Register</string>
 </resources>

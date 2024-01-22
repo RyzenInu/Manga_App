@@ -11,6 +11,6 @@
     <color name="background_light">#FFABC600</color>
     <color name="background_dark">#FFABC600</color>
 
-    <color name="element_background">#1A000000</color>
-    <color name="element_background_dark">#1AFFFFFF</color>
+    <color name="element_background">#40000000</color>
+    <color name="element_background_dark">#40FFFFFF</color>
 </resources>

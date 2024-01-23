@@ -20,15 +20,31 @@
             android:id="@+id/textViewLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/title_Login"
+            android:text="@string/title_login"
             android:textSize="24sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/textViewSubtitle"
+        <LinearLayout
+            android:id="@+id/subtitleLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8sp"
+                android:text="@string/subtitle_login" />
+
+            <TextView
+                android:id="@+id/textViewSubtitleBtn"
+                style="@style/ClickableTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/subtitle_login_btn" />
+        </LinearLayout>
 
         <EditText
             android:id="@+id/editTextTextEmailAddress"
@@ -37,6 +53,8 @@
             android:layout_height="48dp"
             android:layout_marginTop="16dp"
             android:ems="10"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="@string/hint_login_email"
             android:inputType="textEmailAddress" />
 
         <EditText
@@ -46,14 +64,20 @@
             android:layout_height="48dp"
             android:layout_marginTop="16dp"
             android:ems="10"
+            android:hint="@string/hint_login_password"
             android:inputType="textPassword" />
 
         <Button
             android:id="@+id/button"
-            style="@style/Button"
+            style="@style/ButtonCustom"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="16dp"
-            android:text="Button" />
+            android:gravity="center|center_horizontal|center_vertical"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="@string/btn_login"
+            app:icon="@drawable/login_24"
+            app:iconGravity="textEnd" />
     </LinearLayout>
 </LinearLayout>

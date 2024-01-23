@@ -6,6 +6,7 @@
         <item name="fontFamily">@font/poppins_semibold</item>
         <item name="android:fontFamily">@font/poppins_semibold</item>
         <item name="android:textColor">@color/white</item>
+        <item name="android:includeFontPadding">false</item>
     </style>
     <style name="Theme.Manga_App" parent="Base.Theme.Manga_App">
         <item name="colorPrimary">@color/white</item>
@@ -29,7 +30,21 @@
     <style name="SplashScreen">
         <item name="srcCompat">@drawable/logo_vertical_dark</item>
     </style>
-    <style name="EditText">
+    <style name="EditText" parent="android:Widget.EditText">
         <item name="android:background">@drawable/bg_rounded_dark</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="ButtonCustom" parent="Widget.Material3.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="iconTint">@color/white</item>
+        <item name="android:backgroundTint">@color/redish</item>
+        <item name="cornerRadius">32px</item>
+        <item name="android:insetTop">0px</item>
+        <item name="android:insetBottom">0px</item>
+    </style>
+    <style name="ClickableTextView">
+        <item name="android:textColor">@color/redish</item>
     </style>
 </resources>

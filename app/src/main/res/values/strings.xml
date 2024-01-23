@@ -6,6 +6,22 @@
     <string name="bottomNavBar_equipment">Equipment</string>
     <string name="bottomNavBar_stats">Stats</string>
 
-    <string name="title_Login">Login</string>
-    <string name="title_Register">Register</string>
+    <string name="title_login">Login</string>
+    <string name="title_register">Register</string>
+
+    <string name="subtitle_login">Don\'t have an account yet\?</string>
+    <string name="subtitle_login_btn"><u>Register here</u></string>
+    <string name="subtitle_register">Already have an account\?</string>
+    <string name="subtitle_register_btn"><u>Login here</u></string>
+
+    <string name="hint_login_email">E-mail</string>
+    <string name="hint_login_password">Password</string>
+
+    <string name="hint_register_firstname">First name</string>
+    <string name="hint_register_lastname">Last name</string>
+    <string name="hint_register_password">Password</string>
+    <string name="hint_register_repeat_password">Repeat password</string>
+
+    <string name="btn_login">Continue</string>
+    <string name="btn_register">Create account</string>
 </resources>

@@ -47,7 +47,7 @@
         </LinearLayout>
 
         <EditText
-            android:id="@+id/editTextTextEmailAddress"
+            android:id="@+id/editTextTextEmail"
             style="@style/EditText"
             android:layout_width="match_parent"
             android:layout_height="48dp"
@@ -68,7 +68,7 @@
             android:inputType="textPassword" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnLogin"
             style="@style/ButtonCustom"
             android:layout_width="match_parent"
             android:layout_height="48dp"

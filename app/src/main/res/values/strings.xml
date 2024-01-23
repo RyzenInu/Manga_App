@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Manga_App</string>
+    <string name="app_name">Lab Manager</string>
     <string name="mangaTitle">Manga</string>
 
     <string name="bottomNavBar_home">Home</string>

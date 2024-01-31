@@ -19,25 +19,19 @@ public class LoginActivity extends AppCompatActivity {
         Button btnLogin = (Button) findViewById(R.id.btnLogin);
         TextView btnRegister = (TextView) findViewById(R.id.textViewSubtitleBtn);
         EditText editPassword = (EditText) findViewById(R.id.editTextTextPassword);
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(sendLogin()){
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);
-                } else{
-                    Toast.makeText(LoginActivity.this, "Couldn't Login", Toast.LENGTH_LONG).show();
-                    editPassword.setText("");
-                }
+        btnLogin.setOnClickListener(v -> {
+            if(sendLogin()){
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
+            } else{
+                Toast.makeText(LoginActivity.this, "Couldn't Login", Toast.LENGTH_LONG).show();
+                editPassword.setText("");
             }
         });
 
-        btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(intent);
-            }
+        btnRegister.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivity(intent);
         });
     }
 

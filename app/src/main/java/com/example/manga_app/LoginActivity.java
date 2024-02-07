@@ -9,7 +9,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONObject;
+
+import okhttp3.OkHttpClient;
+
 public class LoginActivity extends AppCompatActivity {
+
+    private final OkHttpClient client = new OkHttpClient();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +48,9 @@ public class LoginActivity extends AppCompatActivity {
         // O servidor responde com. { logged: false, error: erro } ou { logged: true }
         // Se recebermos logged: false, mostramos um Toast e limpamos o campo da passe (já está feito)
         // Se recebermos logged: true, redirecionamos para a main activity (já está feito)
+
+
+
         return true; // Temporário
     }
 }

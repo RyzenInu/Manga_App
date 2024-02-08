@@ -1,12 +1,22 @@
 package com.example.manga_app;
 
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +69,31 @@ public class EquipmentFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        //ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_equipment, null);
+
+        //return root;
         return inflater.inflate(R.layout.fragment_equipment, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        loadDevices(view);
+    }
+
+    private void loadDevices(View view) {
+        LinearLayout equipmentLayout = view.findViewById(R.id.equipmentLayout);
+        LinearLayout deviceCard = new LinearLayout(getContext(), null, 0, R.style.equipmentDeviceCard);
+        deviceCard.setOrientation(LinearLayout.HORIZONTAL);
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        deviceCard.setLayoutParams(params);
+
+        TextView text = new TextView(getContext());
+        text.setText("Test");
+        text.setText(R.string.app_name);
+
+        deviceCard.addView(text);
+        equipmentLayout.addView(deviceCard);
     }
 }

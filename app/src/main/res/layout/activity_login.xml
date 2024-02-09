@@ -48,19 +48,19 @@
         </LinearLayout>
 
         <EditText
-            android:id="@+id/editTextTextEmail"
+            android:id="@+id/editTextLoginUsername"
             style="@style/EditText"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="16dp"
             android:ems="10"
             android:fontFamily="@font/poppins_regular"
-            android:hint="@string/hint_login_email"
+            android:hint="@string/hint_login_username"
             android:inputType="textEmailAddress"
             android:autofillHints="emailAddress" />
 
         <EditText
-            android:id="@+id/editTextTextPassword"
+            android:id="@+id/editTextLoginPassword"
             style="@style/EditText"
             android:layout_width="match_parent"
             android:layout_height="48dp"

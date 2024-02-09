@@ -10,6 +10,7 @@
         <item name="android:textCursorDrawable">@drawable/cursor_color</item>
         <item name="colorControlActivated">@color/redish</item>
         <item name="android:textColorHighlight">@color/redish30</item>
+        <item name="android:windowActivityTransitions">true</item>
     </style>
     <style name="Theme.Manga_App" parent="Base.Theme.Manga_App">
         <item name="colorPrimary">@color/white</item>
@@ -51,6 +52,10 @@
     <style name="ClickableTextView">
         <item name="android:textColor">@color/redish</item>
     </style>
+    <style name="topBar">
+        <item name="android:layout_height">64dp</item>
+        <item name="android:padding">8dp</item>
+    </style>
     <style name="topBarImage">
         <item name="srcCompat">@drawable/lab_manager_logo_horizontal</item>
     </style>
@@ -62,5 +67,33 @@
     </style>
     <style name="equipmentDeviceCard">
         <item name="android:background">@drawable/bg_rounded_dark</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_marginBottom">16dp</item>
+    </style>
+    <style name="equipmentDeviceCardVolume">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+    <style name="equipmentDeviceCardVolumeBar" parent="Widget.MaterialComponents.LinearProgressIndicator">
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginHorizontal">16dp</item>
+    </style>
+    <style name="equipmentDeviceCardVolumeValue">
+        <item name="android:layout_weight">0</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+    <style name="equipmentDeviceCardText">
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+    <style name="iconTint">
+        <item name="tint">@color/white</item>
+        <item name="android:tint">@color/white</item>
+        <item name="drawableTint">@color/white</item>
     </style>
 </resources>

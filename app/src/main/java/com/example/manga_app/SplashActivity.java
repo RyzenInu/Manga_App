@@ -19,6 +19,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 Intent nextActivity = new Intent(SplashActivity.this, LoginActivity.class);
                 startActivity(nextActivity);
+                overridePendingTransition(R.anim.zoom_in_from_center, R.anim.zoom_out_to_center);
                 finish();
             }
         },3000);

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +23,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class RegisterActivity extends AppCompatActivity {
+
+    private static final String SERVER_URL = "http://89.115.17.17:3000/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,17 +47,31 @@ public class RegisterActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(v -> {
             Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
             startActivity(intent);
+            overridePendingTransition(R.anim.zoom_in_from_center, R.anim.zoom_out_to_center);
         });
     }
 
     private boolean sendRegister() {
-        String urlRegister = "http://10.0.2.2:2000/user/create/";
-        String username = "editTextRegUsername";
-        String firstname = "editTextRegFirstname";
-        String lastname = "editTextRegLastname";
-        String email = "editTextRegEmail";
-        String password = "editTextRegPassword";
-        String rpassword = "editTextRegRepeatPassword";
+        String urlRegister = SERVER_URL + "user/create/";
+
+        EditText editUsername = findViewById(R.id.editTextRegUsername);
+        EditText editFirstname = findViewById(R.id.editTextRegFirstname);
+        EditText editLastname = findViewById(R.id.editTextRegLastname);
+        EditText editEmail = findViewById(R.id.editTextRegEmail);
+        EditText editPassword = findViewById(R.id.editTextRegPassword);
+        EditText editRepeatPassword = findViewById(R.id.editTextRegRepeatPassword);
+
+        String username = editUsername.getText().toString();
+        String firstname = editFirstname.getText().toString();
+        String lastname = editLastname.getText().toString();
+        String email = editEmail.getText().toString();
+        String password = editPassword.getText().toString();
+        String rpassword = editRepeatPassword.getText().toString();
+
+        // If passwords don't match
+        if(!password.equals(rpassword)){
+            return false;
+        }
 
         // JSON
         JSONObject jsonRegister = new JSONObject();
@@ -64,7 +81,6 @@ public class RegisterActivity extends AppCompatActivity {
             jsonRegister.put("lastname", lastname);
             jsonRegister.put("email", email);
             jsonRegister.put("password", password);
-            jsonRegister.put("rpassword", rpassword);
         } catch (JSONException e) {
             e.printStackTrace();
         }

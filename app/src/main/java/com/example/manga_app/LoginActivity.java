@@ -1,8 +1,9 @@
 package com.example.manga_app;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
+//import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -10,23 +11,20 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.Objects;
 
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
+import okhttp3.*;
 
 public class LoginActivity extends AppCompatActivity {
-    private static final String LOGIN_URL = "http://10.0.2.2:2000/user/login/";
-    private static final String VERIFY_USER_URL = "http://10.0.2.2:2000/user/";
+    private static final String URL = "http://89.115.17.17:3000/";
     private static final MediaType MEDIA_TYPE_JSON = MediaType.parse("application/json; charset=utf-8");
+
+    private static final String TAG = "LOGIN_FRAGMENT";
 
     private final OkHttpClient client = new OkHttpClient();
 
@@ -34,10 +32,10 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Verifica se o usuário já está logado
+        // Verifica se o usuário já está logged in
         if (isUserLoggedIn()) {
-            redirectToMainActivity();
-            return; // Encerra o método onCreate se o usuário já estiver logado
+            verifyUserLoginStatus(getSharedPreferences("user_pref", MODE_PRIVATE).getString("userId", null));
+            return;
         }
 
         setContentView(R.layout.activity_login);
@@ -46,24 +44,28 @@ public class LoginActivity extends AppCompatActivity {
         TextView btnRegister = findViewById(R.id.textViewSubtitleBtn);
 
         btnLogin.setOnClickListener(v -> {
-            EditText editUsername = findViewById(R.id.editTextTextEmail);
-            EditText editPassword = findViewById(R.id.editTextTextPassword);
+            EditText editUsername = findViewById(R.id.editTextLoginUsername);
+            EditText editPassword = findViewById(R.id.editTextLoginPassword);
             String username = editUsername.getText().toString();
             String password = editPassword.getText().toString();
 
-            sendLogin(username, password);
+            if (!username.equals("") && !password.equals("")) {
+                sendLogin(username, password);
+            } else {
+                Toast.makeText(this, R.string.error_login_empty_fields, Toast.LENGTH_LONG).show();
+            }
         });
 
         btnRegister.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
             startActivity(intent);
+            overridePendingTransition(R.anim.zoom_in_from_center, R.anim.zoom_out_to_center);
         });
     }
 
     private boolean isUserLoggedIn() {
         // Verifica se o usuário está logado consultando as SharedPreferences
-        return getSharedPreferences("user_pref", MODE_PRIVATE)
-                .getString("userId", null) != null;
+        return getSharedPreferences("user_pref", MODE_PRIVATE).getString("userId", null) != null;
     }
 
     private void sendLogin(String username, String password) {
@@ -78,18 +80,18 @@ public class LoginActivity extends AppCompatActivity {
         RequestBody requestBody = RequestBody.create(jsonLogin.toString(), MEDIA_TYPE_JSON);
 
         Request request = new Request.Builder()
-                .url(LOGIN_URL)
+                .url(URL + "user/login")
                 .post(requestBody)
                 .build();
 
         client.newCall(request).enqueue(new Callback() {
             @Override
-            public void onFailure(Call call, IOException e) {
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
                 handleNetworkError(e);
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
+            public void onResponse(@NotNull Call call, @NotNull Response response) {
                 try (response) {
                     handleLoginResponse(response);
                 } catch (IOException e) {
@@ -101,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void handleNetworkError(IOException e) {
         e.printStackTrace();
-        runOnUiThread(() -> Toast.makeText(LoginActivity.this, "Erro de conexão", Toast.LENGTH_SHORT).show());
+        runOnUiThread(() -> Toast.makeText(LoginActivity.this, R.string.error_login_auth_failed, Toast.LENGTH_SHORT).show());
     }
 
     private void handleLoginResponse(Response response) throws IOException {
@@ -109,6 +111,7 @@ public class LoginActivity extends AppCompatActivity {
             throw new IOException("Unexpected code " + response);
         }
 
+        assert response.body() != null;
         String responseBody = response.body().string();
         try {
             JSONObject jsonResponse = new JSONObject(responseBody);
@@ -116,11 +119,10 @@ public class LoginActivity extends AppCompatActivity {
             if (logged) {
                 String userId = jsonResponse.optString("userId");
                 saveUserIdToSharedPreferences(userId);
-                verifyUserLoginStatus(userId);
+                redirectToMainActivity();
             } else {
                 runOnUiThread(() -> {
-                    Toast.makeText(LoginActivity.this, "Autenticação falhou", Toast.LENGTH_SHORT).show();
-                    clearSharedPreferences();
+                    Toast.makeText(LoginActivity.this, R.string.error_login_auth_failed, Toast.LENGTH_LONG).show();
                 });
             }
         } catch (JSONException e) {
@@ -137,52 +139,41 @@ public class LoginActivity extends AppCompatActivity {
 
     private void verifyUserLoginStatus(String userId) {
         Request request = new Request.Builder()
-                .url(VERIFY_USER_URL + userId)
+                .url(URL + "user/" + userId)
                 .get()
                 .build();
 
         client.newCall(request).enqueue(new Callback() {
             @Override
-            public void onFailure(Call call, IOException e) {
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
                 handleNetworkError(e);
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
+            public void onResponse(@NotNull Call call, @NotNull Response response) {
                 try (response) {
-                    handleLoginStatusResponse(response);
+                    ResponseBody responseBody = response.body();
+                    JSONObject jsonObj = new JSONObject(responseBody.string());
+                    if (jsonObj.has("username")) {
+                        redirectToMainActivity();
+                        finish();
+                    } else {
+                        clearSharedPreferences();
+                    }
                 } catch (IOException e) {
                     handleNetworkError(e);
+                } catch (JSONException e) {
+                    Log.e(TAG, Objects.requireNonNull(e.getMessage()));
                 }
             }
         });
-    }
-
-    private void handleLoginStatusResponse(Response response) throws IOException {
-        if (!response.isSuccessful()) {
-            handleNetworkError(new IOException("Unexpected code " + response));
-            return;
-        }
-
-        String responseBody = response.body().string();
-        try {
-            JSONObject jsonResponse = new JSONObject(responseBody);
-            boolean loggedIn = jsonResponse.optBoolean("loggedIn");
-
-            if (loggedIn) {
-                redirectToMainActivity();
-            } else {
-                runOnUiThread(() -> Toast.makeText(LoginActivity.this, "Autenticação falhou", Toast.LENGTH_SHORT).show());
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
     }
 
     private void redirectToMainActivity() {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
         finish();
+        overridePendingTransition(R.anim.zoom_in_from_center, R.anim.zoom_out_to_center);
     }
 
     private void clearSharedPreferences() {

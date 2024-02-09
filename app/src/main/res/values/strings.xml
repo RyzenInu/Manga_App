@@ -14,7 +14,7 @@
     <string name="subtitle_register">Already have an account\?</string>
     <string name="subtitle_register_btn"><u>Login here</u></string>
 
-    <string name="hint_login_email">E-mail</string>
+    <string name="hint_login_username">Username</string>
     <string name="hint_login_password">Password</string>
 
     <string name="hint_register_username">Username</string>
@@ -26,6 +26,14 @@
 
     <string name="btn_login">Continue</string>
     <string name="btn_register">Create account</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="equipment_device_motor_state_on">Motor ON</string>
+    <string name="equipment_device_motor_state_off">Motor OFF</string>
+    <string name="equipment_device_volume">%1$sL</string>
+    <string name="equipment_device_volume_default">0.0L</string>
+    <string name="equipment_device_temp">%1$sºC</string>
+    <string name="equipment_device_temp_default">0.0ºC</string>
+
+    <string name="error_login_empty_fields">Username and Password fields cannot be empty.</string>
+    <string name="error_login_auth_failed">Wrong username or password.</string>
 </resources>

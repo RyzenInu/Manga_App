@@ -19,7 +19,7 @@ import okhttp3.*;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private static final String SERVER_URL = "http://89.115.17.17:3000/";
+    private static final String SERVER_URL = "http://10.0.2.2:3000/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

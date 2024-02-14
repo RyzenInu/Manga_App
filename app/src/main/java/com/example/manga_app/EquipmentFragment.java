@@ -117,7 +117,7 @@ public class EquipmentFragment extends Fragment {
     }
 
     private final OkHttpClient client = new OkHttpClient();
-    private static final String SERVER_URL = "http://192.168.1.2:3000/";
+    private static final String SERVER_URL = "http://192.168.137.1:3000/";
     private static final String TAG = "EQUIPMENT_FRAGMENT";
 
     private void loadDevices(View view) {

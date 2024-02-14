@@ -40,7 +40,7 @@ import okhttp3.ResponseBody;
 public class ProfileActivity extends AppCompatActivity {
 
     private final OkHttpClient client = new OkHttpClient();
-    private static final String SERVER_URL = "http://192.168.1.2:3000/";
+    private static final String SERVER_URL = "http://192.168.137.1:3000/";
     private static final String TAG = "PROFILE_ACTIVITY";
 
     @Override

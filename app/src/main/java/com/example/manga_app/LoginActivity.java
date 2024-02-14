@@ -21,7 +21,7 @@ import java.util.Objects;
 import okhttp3.*;
 
 public class LoginActivity extends AppCompatActivity {
-    private static final String URL = "http://10.0.2.2:3000/";
+    private static final String URL = "http://192.168.1.2:3000/";
     private static final MediaType MEDIA_TYPE_JSON = MediaType.parse("application/json; charset=utf-8");
 
     private static final String TAG = "LOGIN_FRAGMENT";

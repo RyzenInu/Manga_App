@@ -34,6 +34,12 @@
     <string name="equipment_device_temp">%1$sºC</string>
     <string name="equipment_device_temp_default">0.0ºC</string>
 
+    <string name="profile_placeholder_firstlastname">John Doe</string>
+    <string name="profile_placeholder_username">Username</string>
+    <string name="profile_placeholder_email">example@domain.com</string>
+    <string name="profile_placeholder_lab">Lab Name</string>
+    <string name="profile_btn_logout">Logout</string>
+
     <string name="error_login_empty_fields">Username and Password fields cannot be empty.</string>
     <string name="error_login_auth_failed">Wrong username or password.</string>
 </resources>

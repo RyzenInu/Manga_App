@@ -27,5 +27,64 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"></LinearLayout>
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/imgViewProfile"
+            style="@style/profileImage"
+            android:layout_width="192dp"
+            android:layout_height="192dp"
+            android:layout_marginVertical="32dp"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/round_person_24" />
+
+        <TextView
+            android:id="@+id/txtViewFirstLastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_placeholder_firstlastname"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txtViewUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:text="@string/profile_placeholder_username"
+            android:textAlignment="center"
+            android:textColor="#707070"
+            android:textSize="16sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/txtViewEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_placeholder_email"
+            android:textAlignment="center"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/txtViewLab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableTint="#FFFFFF"
+            android:text="@string/profile_placeholder_lab"
+            android:textAlignment="center"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="#FF0000"
+            android:text="@string/profile_btn_logout"
+            android:textColor="#FFFFFF"
+            app:icon="@drawable/round_logout_24"
+            app:iconTint="@color/white" />
+    </LinearLayout>
 </LinearLayout>

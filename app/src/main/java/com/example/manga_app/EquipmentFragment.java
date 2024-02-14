@@ -117,7 +117,7 @@ public class EquipmentFragment extends Fragment {
     }
 
     private final OkHttpClient client = new OkHttpClient();
-    private static final String SERVER_URL = "http://10.0.2.2:3000/";
+    private static final String SERVER_URL = "http://192.168.1.2:3000/";
     private static final String TAG = "EQUIPMENT_FRAGMENT";
 
     private void loadDevices(View view) {
@@ -149,7 +149,7 @@ public class EquipmentFragment extends Fragment {
                                     String deviceTitle = jsonObject.getString("name");
                                     int deviceMotor = jsonObject.getInt("motor");
 
-                                    ScrollView equipmentLayout = view.findViewById(R.id.equipmentLayout);
+                                    LinearLayout equipmentList = view.findViewById(R.id.equipmentList);
                                     LinearLayout deviceCard = new LinearLayout(getContext(), null, 0, R.style.equipmentDeviceCard);
 
                                     float scale = getResources().getDisplayMetrics().density;
@@ -210,7 +210,7 @@ public class EquipmentFragment extends Fragment {
                                     deviceCard.addView(motorState);
                                     deviceCard.addView(tempRow);
                                     deviceCard.addView(volume);
-                                    equipmentLayout.addView(deviceCard);
+                                    equipmentList.addView(deviceCard);
                                 }
                                 loadDeviceValues(view);
                             } catch (JSONException e) {
@@ -227,7 +227,7 @@ public class EquipmentFragment extends Fragment {
     }
 
     private void loadDeviceValues(View view) {
-        ScrollView equipmentLayout = view.findViewById(R.id.equipmentLayout);
+        LinearLayout equipmentLayout = view.findViewById(R.id.equipmentList);
 
         for (int i = 0; i < equipmentLayout.getChildCount(); i++) {
 

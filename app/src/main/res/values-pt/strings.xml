@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="bottomNavBar_equipment">Equipamento</string>
+    <string name="bottomNavBar_stats">Estatística</string>
+    <string name="title_register">Registo</string>
+    <string name="subtitle_login">Ainda não tem conta\\?</string>
+    <string name="subtitle_login_btn"><u>Registe-se aqui</u></string>
+    <string name="subtitle_register">Já tem uma conta\\?</string>
+    <string name="subtitle_register_btn"><u>Entre aqui</u></string>
+    <string name="hint_login_username">Nome de utilizador</string>
+    <string name="hint_login_password">Palavra-passe</string>
+    <string name="hint_register_username">Nome de utilizador</string>
+    <string name="hint_register_firstname">Primeiro Nome</string>
+    <string name="hint_register_lastname">Apelido</string>
+    <string name="hint_register_password">Palavra-passe</string>
+    <string name="hint_register_repeat_password">Repetir Palavra-passe</string>
+    <string name="btn_login">Continuar</string>
+    <string name="btn_register">Criar Conta</string>
+    <string name="equipment_device_motor_state_on">Motor Ligado</string>
+    <string name="equipment_device_motor_state_off">Motor Desligado</string>
+    <string name="profile_placeholder_username">Nome de utilizador</string>
+    <string name="profile_placeholder_email">exemplo@dominio.pt</string>
+    <string name="profile_placeholder_lab">Nome do Laboratório</string>
+    <string name="profile_btn_logout">Terminar Sessão</string>
+    <string name="settings_label_theme">"Tema: "</string>
+    <string name="settings_label_language">"Idioma: "</string>
+    <string name="settings_spinner_options_theme_sameasdevice">Seguir Sistema</string>
+    <string name="settings_spinner_options_theme_dark">Escuro</string>
+    <string name="settings_spinner_options_theme_light">Claro</string>
+    <string name="settings_spinner_options_lang_default">Padrão (Inglês)</string>
+    <string name="settings_spinner_options_lang_en">Inglês</string>
+    <string name="settings_spinner_options_lang_pt">Português</string>
+    <string name="error_login_empty_fields">"Os campos Nome de utilizador e palavra-passe não podem estar vazios. "</string>
+    <string name="error_login_auth_failed">Nome de utilizador ou palavra-passe errada.</string>
+</resources>

@@ -104,4 +104,8 @@
         <item name="android:tint">@color/white</item>
         <item name="drawableTint">@color/white</item>
     </style>
+    <style name="settings_option">
+        <item name="android:background">@drawable/bg_rounded_dark</item>
+        <item name="android:padding">16dp</item>
+    </style>
 </resources>

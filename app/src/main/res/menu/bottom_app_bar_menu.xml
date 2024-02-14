@@ -2,16 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/action_home"
-        android:title="Home"
+        android:title="@string/bottomNavBar_home"
         android:icon="@drawable/cottage" />
 
     <item
         android:id="@+id/action_equipment"
-        android:title="Equipment"
+        android:title="@string/bottomNavBar_equipment"
         android:icon="@drawable/science" />
 
     <item
         android:id="@+id/action_stats"
-        android:title="Stats"
+        android:title="@string/bottomNavBar_stats"
         android:icon="@drawable/show_chart" />
 </menu>

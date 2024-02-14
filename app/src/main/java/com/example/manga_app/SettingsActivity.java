@@ -8,6 +8,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import java.util.Locale;
 
 public class SettingsActivity extends AppCompatActivity {
+    private boolean isSpinnerTouched = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,9 +60,17 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
         Spinner lang = findViewById(R.id.spinnerLanguage);
+        lang.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                isSpinnerTouched = true;
+                return false;
+            }
+        });
         lang.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (!isSpinnerTouched) return;
                 switch (position) {
                     case 0:
                         setLocale("en");
@@ -97,17 +107,29 @@ public class SettingsActivity extends AppCompatActivity {
                 break;
         }
 
+        String currentLocale = getResources().getConfiguration().getLocales().get(0).toString();
+        switch (currentLocale) {
+            case "en":
+                lang.setSelection(1);
+                break;
+            case "pt":
+                lang.setSelection(2);
+                break;
+            default:
+                break;
+        }
     }
 
     public void setLocale(String lang) {
         Locale myLocale = new Locale(lang);
+        Locale.setDefault(myLocale);
         Resources res = getResources();
         DisplayMetrics dm = res.getDisplayMetrics();
         Configuration conf = res.getConfiguration();
         conf.setLocale(myLocale);
         res.updateConfiguration(conf, dm);
-        /*Intent refresh = new Intent(this, SettingsActivity.class);
+        Intent refresh = getIntent();
         finish();
-        startActivity(refresh);*/
+        startActivity(refresh);
     }
 }
